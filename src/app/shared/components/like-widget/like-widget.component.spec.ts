@@ -27,4 +27,10 @@ describe(LikeWidgetComponent.name, () => {
 	it('should auto generate ID when input has not provided', () => {
 		expect(component.id).toBeTruthy();
 	});
+
+  it('should not generate ID when input is present', () => {
+
+    component.id = '1122'
+    expect(component.id).toBe('1122')
+	});
 });
