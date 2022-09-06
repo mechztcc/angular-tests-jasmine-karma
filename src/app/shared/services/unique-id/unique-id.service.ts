@@ -2,27 +2,28 @@ import { Injectable } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class UniqueIdService {
-  private numberOfGeneratedIds = -0;
+	private numberOfGeneratedIds = -0;
+	private validId = /^[A-Za-z]+[\w\-\:\.]*$/;
 
-  constructor() {}
+	constructor() {}
 
-  generateUniqueIdWIthPrefix(prefix: string): string {
-    if (!prefix) {
-      throw Error('Prefix can not be empty');
-    }
-    const uniqueId = this.generaUniqueId();
-    this.numberOfGeneratedIds++;
-    return `${prefix}-${uniqueId}`;
-  }
+	generateUniqueIdWIthPrefix(prefix: string): string {
+		if (!prefix) {
+			throw Error('Prefix can not be empty');
+		}
+		const uniqueId = this.generaUniqueId();
+		this.numberOfGeneratedIds++;
+		return `${prefix}-${uniqueId}`;
+	}
 
-  getNumberOfGeneratedUniqueIds(): number {
-    return this.numberOfGeneratedIds;
-  }
+	getNumberOfGeneratedUniqueIds(): number {
+		return this.numberOfGeneratedIds;
+	}
 
-  private generaUniqueId(): string {
-    return uuid();
-  }
+	private generaUniqueId(): string {
+		return uuid();
+	}
 }
