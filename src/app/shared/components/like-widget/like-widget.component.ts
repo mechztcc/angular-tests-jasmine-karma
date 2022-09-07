@@ -10,7 +10,7 @@ import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 export class LikeWidgetComponent implements OnInit {
 	@Output() public liked = new EventEmitter<void>();
 	@Input() public likes = 0;
-	@Input() public id;
+	@Input() public id: string;
 
 	public icons = {
 		faThumbsUp,

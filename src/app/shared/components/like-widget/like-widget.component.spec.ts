@@ -28,9 +28,15 @@ describe(LikeWidgetComponent.name, () => {
 		expect(component.id).toBeTruthy();
 	});
 
-  it('should not generate ID when input is present', () => {
+	it('should not generate ID when input is present', () => {
+		component.id = '1122';
+		expect(component.id).toBe('1122');
+	});
 
-    component.id = '1122'
-    expect(component.id).toBe('1122')
+	it(`#${LikeWidgetComponent.prototype.like.name}, should trigger emission when called`, () => {
+		component.liked.subscribe(() => {
+			expect(true).toBeTrue();
+		});
+		component.like();
 	});
 });
